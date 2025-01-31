@@ -13,7 +13,7 @@
 
 🚀 **Frontend:** React.js, Tailwind CSS, Framer Motion  
 🛠 **Backend:** Node.js, Express.js  
-🗄 **Database:** MongoDB
+🗄 **Database:** MongoDB  
 🌍 **Deployment:** Netlify  
 
 ## ⚙️ Installation & Setup
