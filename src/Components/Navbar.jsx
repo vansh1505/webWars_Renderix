@@ -28,11 +28,6 @@ function Navbar() {
 
   const navItems = [
     {
-      label: 'About',
-      icon: Building2,
-      dropdown: ['Overview', 'Venue', 'Committee']
-    },
-    {
       label: 'Program',
       icon: Calendar,
       dropdown: ['Schedule', 'Keynotes', 'Workshops']
@@ -51,7 +46,12 @@ function Navbar() {
       label: 'Registration',
       icon: GraduationCap,
       href: '#register'
-    }
+    },
+    {
+      label: 'About',
+      icon: Building2,
+      
+    },
   ];
 
   return (
@@ -68,7 +68,16 @@ function Navbar() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <img src="/gustudentchapter.png" className='h-14' alt="" />
+            <div className='flex items-center'>
+            <img src="iccsai.png" alt="iccsai" className='h-16' />
+            <div
+              className={`h-8 w-px mx-2 ${
+                isScrolled ? 'bg-black' : 'bg-white/50'
+              }`}
+            >
+            </div>
+            <img src="/gustudentchapter.png" className='h-14' alt="ieee Gu" />
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
