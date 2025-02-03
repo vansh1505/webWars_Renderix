@@ -1,6 +1,5 @@
 "use client"
 import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
 import { FileText, Layout, AlertTriangle, Type, FileImage, Clock, Download, ExternalLink } from "lucide-react"
 
 const fadeInUp = {
@@ -46,14 +45,9 @@ const bentoItems = [
   },
 ]
 
-export default function GuidelinesPage() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
+export default function Guidelines() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 p-6 md:p-10">
+    <div className="min-h-screen mt-12 bg-gradient-to-br from-gray-50 via-white to-blue-50 p-6 md:p-10">
       <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="mb-12 text-center">
         <h1 className="text-sm font-medium uppercase tracking-wider text-blue-600">Conference Guidelines</h1>
         <h2 className="mt-2 text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
@@ -63,12 +57,12 @@ export default function GuidelinesPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <motion.div
-          ref={ref}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
           variants={fadeInUp}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           className="md:col-span-2 lg:col-span-3"
+          viewport={{ once: true }}
         >
           <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
             <p className="text-gray-600 leading-relaxed">
@@ -83,11 +77,11 @@ export default function GuidelinesPage() {
         {bentoItems.map((item, index) => (
           <motion.div
             key={index}
-            ref={ref}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            whileInView="visible"
             variants={fadeInUp}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.3, delay: index * 0.05 }}
+            viewport={{ once: true }}
           >
             <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 h-full">
               <div className="flex items-center gap-2 mb-2">
@@ -100,12 +94,12 @@ export default function GuidelinesPage() {
         ))}
 
         <motion.div
-          ref={ref}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
           variants={fadeInUp}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
           className="md:col-span-2 lg:col-span-3"
+          viewport={{ once: true }}
         >
           <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
@@ -129,12 +123,12 @@ export default function GuidelinesPage() {
         </motion.div>
 
         <motion.div
-          ref={ref}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
           variants={fadeInUp}
-          transition={{ duration: 0.5, delay: 0.9 }}
+          transition={{ duration: 0.3, delay: 0.45 }}
           className="md:col-span-2 lg:col-span-3"
+          viewport={{ once: true }}
         >
           <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
             <h3 className="text-xl font-bold mb-4 text-blue-600">Important Dates</h3>
@@ -159,12 +153,12 @@ export default function GuidelinesPage() {
         </motion.div>
 
         <motion.div
-          ref={ref}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
           variants={fadeInUp}
-          transition={{ duration: 0.5, delay: 1.0 }}
+          transition={{ duration: 0.3, delay: 0.5 }}
           className="md:col-span-2 lg:col-span-3"
+          viewport={{ once: true }}
         >
           <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
             <h3 className="text-xl font-bold mb-4 text-blue-600">Additional Resources</h3>
@@ -194,4 +188,3 @@ export default function GuidelinesPage() {
     </div>
   )
 }
-

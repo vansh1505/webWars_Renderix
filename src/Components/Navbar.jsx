@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, 
   X, 
@@ -9,7 +10,6 @@ import {
   GraduationCap,
   Building2,
   ChevronDown,
-  Sparkles,
   Globe2
 } from 'lucide-react';
 
@@ -17,6 +17,7 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,17 +51,18 @@ function Navbar() {
     {
       label: 'About',
       icon: Building2,
-      
     },
   ];
+
+  const isHomePage = location.pathname === '/';
 
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled 
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          isScrolled || !isHomePage 
             ? 'bg-white/80 backdrop-blur-lg shadow-lg' 
             : 'bg-transparent'
         }`}
@@ -69,14 +71,14 @@ function Navbar() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className='flex items-center'>
-            <img src="iccsai.png" alt="iccsai" className='h-16' />
-            <div
-              className={`h-8 w-px mx-2 ${
-                isScrolled ? 'bg-black' : 'bg-white/50'
-              }`}
-            >
-            </div>
-            <img src="/gustudentchapter.png" className='h-14' alt="ieee Gu" />
+              <img src="iccsai.png" alt="iccsai" className='h-16' />
+              <div
+                className={`h-8 w-px mx-2 ${
+                  isScrolled || !isHomePage ? 'bg-black' : 'bg-white/50'
+                }`}
+              >
+              </div>
+              <img src="/gustudentchapter.png" className='h-14' alt="ieee Gu" />
             </div>
 
             {/* Desktop Navigation */}
@@ -85,7 +87,7 @@ function Navbar() {
                 <div key={index} className="relative group">
                   <motion.button
                     className={`px-4 py-2 rounded-xl flex items-center gap-2 ${
-                      isScrolled ? 'text-gray-600 hover:text-blue-600' : 'text-white/90 hover:text-white'
+                      isScrolled || !isHomePage ? 'text-gray-600 hover:text-blue-600' : 'text-white/90 hover:text-white'
                     }`}
                     whileHover={{ scale: 1.05 }}
                     onHoverStart={() => setActiveDropdown(item.label)}
@@ -113,17 +115,18 @@ function Navbar() {
                       >
                         <div className="absolute -top-2 left-6 w-4 h-4 bg-white rotate-45 border-l border-t border-gray-100"></div>
                         {item.dropdown.map((subItem, subIndex) => (
-                          <motion.a
+                          <motion.div
                             key={subIndex}
-                            href={`#${subItem.toLowerCase()}`}
                             className="block px-4 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                             whileHover={{ x: 5 }}
                           >
-                            <div className="flex items-center gap-2">
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                              {subItem}
-                            </div>
-                          </motion.a>
+                            <Link to={`/${subItem.toLowerCase()}`}>
+                              <div className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                {subItem}
+                              </div>
+                            </Link>
+                          </motion.div>
                         ))}
                       </motion.div>
                     )}
@@ -171,7 +174,7 @@ function Navbar() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className={isScrolled ? 'text-gray-900' : 'text-white'} />
+                    <X className={isScrolled || !isHomePage ? 'text-gray-900' : 'text-white'} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -181,7 +184,7 @@ function Navbar() {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className={isScrolled ? 'text-gray-900' : 'text-white'} />
+                    <Menu className={isScrolled || !isHomePage ? 'text-gray-900' : 'text-white'} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -240,14 +243,14 @@ function Navbar() {
                         className="overflow-hidden"
                       >
                         {item.dropdown.map((subItem, subIndex) => (
-                          <motion.a
+                          <motion.Link
                             key={subIndex}
-                            href={`#${subItem.toLowerCase()}`}
+                            to={`/${subItem.toLowerCase()}`}
                             className="block px-16 py-3 text-gray-500 hover:text-blue-600"
                             whileHover={{ x: 5 }}
                           >
                             {subItem}
-                          </motion.a>
+                          </motion.Link>
                         ))}
                       </motion.div>
                     )}
