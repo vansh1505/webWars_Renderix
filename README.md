@@ -1,6 +1,6 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Comfortaa&size=50&pause=1000&color=18b8d0&center=true&vCenter=true&width=1000&height=80&lines=Welcome+to+Web+Wars!;Team+Renderix)](https://git.io/typing-svg)
 
-# Project Title: Web Wars 2025 (will update soon)
+# Project Title: ICCSAI 2025 - Official Conference Website by Renderix
 
 ## 🎯 Team Name & Members
 
@@ -13,8 +13,8 @@
 
 🚀 **Frontend:** React.js, Tailwind CSS, Framer Motion  
 🛠 **Backend:** Node.js, Express.js  
-🗄 **Database:** MongoDB
-🌍 **Deployment:** Vercel  
+🗄 **Database:** MongoDB  
+🌍 **Deployment:** Netlify  
 
 ## ⚙️ Installation & Setup
 
@@ -43,7 +43,7 @@ Follow these steps to set up the project locally:
 
 ## 🌍 Deployment
 
-🔗 **Live Link:** *Will be available soon*
+🔗 **Live Link:** [webwars-renderix](https://webwars-renderix.netlify.app/)
 
 ---
 
