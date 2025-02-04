@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { 
   Menu, 
   X, 
@@ -12,6 +12,46 @@ import {
   ChevronDown,
   Globe2
 } from 'lucide-react';
+
+const navItems = [
+  {
+    label: 'Program',
+    icon: Calendar,
+    dropdown: [
+      { label: 'Schedule', link: '/schedule' },
+      { label: 'Keynotes', link: '/keynotes' },
+      { label: 'Workshops', link: '/workshops' }
+    ]
+  },
+  {
+    label: 'Submissions',
+    icon: BookOpen,
+    dropdown: [
+      { label: 'Guidelines', link: '/guidelines' },
+      { label: 'IEEE E-Copyright Process', link: '/ieee-copyright-process.pdf',external: true },
+      { label: 'Templates', link: 'https://www.ieee.org/conferences/publishing/templates.html', external: true }
+    ]
+  },
+  {
+    label: 'Tracks',
+    icon: Users,
+    dropdown: [
+      { label: 'AI & ML', link: '/ai-ml' },
+      { label: 'Security', link: '/security' },
+      { label: 'Communication', link: '/communication' }
+    ]
+  },
+  {
+    label: 'Registration',
+    icon: GraduationCap,
+    link: '/register'
+  },
+  {
+    label: 'About',
+    icon: Building2,
+    link: '/about'
+  },
+];
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,33 +66,6 @@ function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navItems = [
-    {
-      label: 'Program',
-      icon: Calendar,
-      dropdown: ['Schedule', 'Keynotes', 'Workshops']
-    },
-    {
-      label: 'Submissions',
-      icon: BookOpen,
-      dropdown: ['Call for Papers', 'Guidelines', 'Templates']
-    },
-    {
-      label: 'Tracks',
-      icon: Users,
-      dropdown: ['AI & ML', 'Security', 'Communication']
-    },
-    {
-      label: 'Registration',
-      icon: GraduationCap,
-      href: '#register'
-    },
-    {
-      label: 'About',
-      icon: Building2,
-    },
-  ];
 
   const isHomePage = location.pathname === '/';
 
@@ -69,23 +82,22 @@ function Navbar() {
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
             <div className='flex items-center'>
-              <img src="iccsai.png" alt="iccsai" className='h-16' />
-              <div
-                className={`h-8 w-px mx-2 ${
-                  isScrolled || !isHomePage ? 'bg-black' : 'bg-white/50'
-                }`}
-              >
-              </div>
-              <img src="/gustudentchapter.png" className='h-14' alt="ieee Gu" />
+              <Link to='/' className='flex items-center'>
+                <img src="iccsai.png" alt="iccsai" className='h-16' />
+                <div
+                  className={`h-8 w-px mx-2 ${
+                    isScrolled || !isHomePage ? 'bg-black' : 'bg-white/50'
+                  }`}
+                />
+                <img src="/gustudentchapter.png" className='h-14' alt="ieee Gu" />
+              </Link>
             </div>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item, index) => (
                 <div key={index} className="relative group">
-                  <motion.button
+                  <motion.div
                     className={`px-4 py-2 rounded-xl flex items-center gap-2 ${
                       isScrolled || !isHomePage ? 'text-gray-600 hover:text-blue-600' : 'text-white/90 hover:text-white'
                     }`}
@@ -93,6 +105,7 @@ function Navbar() {
                     onHoverStart={() => setActiveDropdown(item.label)}
                     onHoverEnd={() => setActiveDropdown(null)}
                   >
+                    <Link className='flex items-center gap-2' to={item.link}>
                     <item.icon className="w-4 h-4" />
                     {item.label}
                     {item.dropdown && (
@@ -100,9 +113,9 @@ function Navbar() {
                         activeDropdown === item.label ? 'rotate-180' : ''
                       }`} />
                     )}
-                  </motion.button>
+                    </Link>
+                  </motion.div>
 
-                  {/* Dropdown Menu */}
                   <AnimatePresence>
                     {item.dropdown && activeDropdown === item.label && (
                       <motion.div
@@ -120,12 +133,21 @@ function Navbar() {
                             className="block px-4 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                             whileHover={{ x: 5 }}
                           >
-                            <Link to={`/${subItem.toLowerCase()}`}>
-                              <div className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                                {subItem}
-                              </div>
-                            </Link>
+                            {subItem.external ? (
+                              <a href={subItem.link} target="_blank" rel="noopener noreferrer">
+                                <div className="flex items-center gap-2">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                  {subItem.label}
+                                </div>
+                              </a>
+                            ) : (
+                              <Link to={subItem.link}>
+                                <div className="flex items-center gap-2">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                  {subItem.label}
+                                </div>
+                              </Link>
+                            )}
                           </motion.div>
                         ))}
                       </motion.div>
@@ -159,7 +181,6 @@ function Navbar() {
               </motion.button>
             </div>
 
-            {/* Mobile Menu Button */}
             <motion.button
               className="lg:hidden relative w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center"
               whileTap={{ scale: 0.9 }}
@@ -193,7 +214,6 @@ function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -243,14 +263,21 @@ function Navbar() {
                         className="overflow-hidden"
                       >
                         {item.dropdown.map((subItem, subIndex) => (
-                          <motion.Link
+                          <motion.div
                             key={subIndex}
-                            to={`/${subItem.toLowerCase()}`}
                             className="block px-16 py-3 text-gray-500 hover:text-blue-600"
                             whileHover={{ x: 5 }}
                           >
-                            {subItem}
-                          </motion.Link>
+                            {subItem.external ? (
+                              <a href={subItem.link} target="_blank" rel="noopener noreferrer">
+                                {subItem.label}
+                              </a>
+                            ) : (
+                              <Link to={subItem.link}>
+                                {subItem.label}
+                              </Link>
+                            )}
+                          </motion.div>
                         ))}
                       </motion.div>
                     )}

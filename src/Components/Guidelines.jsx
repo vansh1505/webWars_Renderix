@@ -1,4 +1,3 @@
-"use client"
 import { motion } from "framer-motion"
 import { FileText, Layout, AlertTriangle, Type, FileImage, Clock, Download, ExternalLink } from "lucide-react"
 
@@ -55,7 +54,7 @@ export default function Guidelines() {
         </h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -64,8 +63,8 @@ export default function Guidelines() {
           className="md:col-span-2 lg:col-span-3"
           viewport={{ once: true }}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-            <p className="text-gray-600 leading-relaxed">
+          <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            <p className="text-gray-700 leading-relaxed">
               Authors are invited to submit original, high-quality, and previously unpublished research articles.
               Submissions must not be under review by any other publication or conference. Each manuscript is limited to
               a maximum of six (6) pages, including figures, tables, and references. Additional pages may be
@@ -83,12 +82,12 @@ export default function Guidelines() {
             transition={{ duration: 0.3, delay: index * 0.05 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 h-full">
-              <div className="flex items-center gap-2 mb-2">
+            <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 h-full">
+              <div className="flex items-center gap-3 mb-4">
                 <span className="text-blue-600">{item.icon}</span>
                 <h3 className="text-lg font-semibold">{item.title}</h3>
               </div>
-              <p className="text-gray-600">{item.content}</p>
+              <p className="text-gray-700">{item.content}</p>
             </div>
           </motion.div>
         ))}
@@ -101,13 +100,14 @@ export default function Guidelines() {
           className="md:col-span-2 lg:col-span-3"
           viewport={{ once: true }}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+          <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 Download Template
               </h3>
               <motion.a
-                href="#"
+                href="https://www.ieee.org/conferences/publishing/templates.html"
+                target="_blank"
                 className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -115,7 +115,7 @@ export default function Guidelines() {
                 <Download className="mr-2 h-4 w-4" /> IEEE Template
               </motion.a>
             </div>
-            <p className="text-gray-600">
+            <p className="text-gray-700">
               Use the IEEE MS Word template provided for proper formatting. Papers violating formatting guidelines may
               be rejected.
             </p>
@@ -130,21 +130,21 @@ export default function Guidelines() {
           className="md:col-span-2 lg:col-span-3"
           viewport={{ once: true }}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+          <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
             <h3 className="text-xl font-bold mb-4 text-blue-600">Important Dates</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li className="flex items-center">
-                <Clock className="mr-2 h-4 w-4 text-blue-600" />
+                <Clock className="mr-2 h-5 w-5 text-blue-600" />
                 <span className="font-semibold">Submission Deadline:</span>
                 <span className="ml-2">August 15, 2023</span>
               </li>
               <li className="flex items-center">
-                <Clock className="mr-2 h-4 w-4 text-blue-600" />
+                <Clock className="mr-2 h-5 w-5 text-blue-600" />
                 <span className="font-semibold">Notification of Acceptance:</span>
                 <span className="ml-2">September 30, 2023</span>
               </li>
               <li className="flex items-center">
-                <Clock className="mr-2 h-4 w-4 text-blue-600" />
+                <Clock className="mr-2 h-5 w-5 text-blue-600" />
                 <span className="font-semibold">Camera-ready Submission:</span>
                 <span className="ml-2">October 15, 2023</span>
               </li>
@@ -160,24 +160,24 @@ export default function Guidelines() {
           className="md:col-span-2 lg:col-span-3"
           viewport={{ once: true }}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+          <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
             <h3 className="text-xl font-bold mb-4 text-blue-600">Additional Resources</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li>
                 <a href="#" className="text-blue-600 hover:underline flex items-center">
-                  <ExternalLink className="mr-2 h-4 w-4" />
+                  <ExternalLink className="mr-2 h-5 w-5" />
                   IEEE Conference Policies
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-600 hover:underline flex items-center">
-                  <ExternalLink className="mr-2 h-4 w-4" />
+                  <ExternalLink className="mr-2 h-5 w-5" />
                   Frequently Asked Questions
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-600 hover:underline flex items-center">
-                  <ExternalLink className="mr-2 h-4 w-4" />
+                  <ExternalLink className="mr-2 h-5 w-5" />
                   Contact Organizing Committee
                 </a>
               </li>
