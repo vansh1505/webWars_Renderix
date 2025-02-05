@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { 
-  Menu, 
-  X, 
-  Calendar, 
-  Users, 
-  BookOpen, 
+import { Link, useLocation } from 'react-router-dom';
+import {
+  Menu,
+  X,
+  Calendar,
+  Users,
+  BookOpen,
   GraduationCap,
   Building2,
   ChevronDown,
@@ -15,41 +15,33 @@ import {
 
 const navItems = [
   {
-    label: 'Program',
-    icon: Calendar,
-    dropdown: [
-      { label: 'Schedule', link: '/schedule' },
-      { label: 'Keynotes', link: '/keynotes' },
-      { label: 'Workshops', link: '/workshops' }
-    ]
-  },
-  {
     label: 'Submissions',
     icon: BookOpen,
     dropdown: [
       { label: 'Guidelines', link: '/guidelines' },
-      { label: 'IEEE E-Copyright Process', link: '/ieee-copyright-process.pdf',external: true },
+      { label: 'IEEE E-Copyright Process', link: '/ieee-copyright-process.pdf', external: true },
       { label: 'Templates', link: 'https://www.ieee.org/conferences/publishing/templates.html', external: true }
     ]
   },
   {
-    label: 'Tracks',
+    label: 'Committee',
     icon: Users,
     dropdown: [
-      { label: 'AI & ML', link: '/ai-ml' },
-      { label: 'Security', link: '/security' },
-      { label: 'Communication', link: '/communication' }
+      { label: 'Members', link: '/members' },
+      { label: 'Speakers', link: '/speakers' },
     ]
   },
   {
     label: 'Registration',
     icon: GraduationCap,
-    link: '/register'
+    link: '/register',
+    dropdown: null
   },
   {
     label: 'About',
     icon: Building2,
-    link: '/about'
+    link: '/about',
+    dropdown: null
   },
 ];
 
@@ -74,11 +66,10 @@ function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled || !isHomePage 
-            ? 'bg-white/80 backdrop-blur-lg shadow-lg' 
-            : 'bg-transparent'
-        }`}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled || !isHomePage
+          ? 'bg-white/80 backdrop-blur-lg shadow-lg'
+          : 'bg-transparent'
+          }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -86,9 +77,8 @@ function Navbar() {
               <Link to='/' className='flex items-center'>
                 <img src="iccsai.png" alt="iccsai" className='h-16' />
                 <div
-                  className={`h-8 w-px mx-2 ${
-                    isScrolled || !isHomePage ? 'bg-black' : 'bg-white/50'
-                  }`}
+                  className={`h-8 w-px mx-2 ${isScrolled || !isHomePage ? 'bg-black' : 'bg-white/50'
+                    }`}
                 />
                 <img src="/gustudentchapter.png" className='h-14' alt="ieee Gu" />
               </Link>
@@ -98,21 +88,19 @@ function Navbar() {
               {navItems.map((item, index) => (
                 <div key={index} className="relative group">
                   <motion.div
-                    className={`px-4 py-2 rounded-xl flex items-center gap-2 ${
-                      isScrolled || !isHomePage ? 'text-gray-600 hover:text-blue-600' : 'text-white/90 hover:text-white'
-                    }`}
+                    className={`px-4 py-2 rounded-xl flex items-center gap-2 ${isScrolled || !isHomePage ? 'text-gray-600 hover:text-blue-600' : 'text-white/90 hover:text-white'
+                      }`}
                     whileHover={{ scale: 1.05 }}
                     onHoverStart={() => setActiveDropdown(item.label)}
                     onHoverEnd={() => setActiveDropdown(null)}
                   >
                     <Link className='flex items-center gap-2' to={item.link}>
-                    <item.icon className="w-4 h-4" />
-                    {item.label}
-                    {item.dropdown && (
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
-                        activeDropdown === item.label ? 'rotate-180' : ''
-                      }`} />
-                    )}
+                      <item.icon className="w-4 h-4" />
+                      {item.label}
+                      {item.dropdown && (
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeDropdown === item.label ? 'rotate-180' : ''
+                          }`} />
+                      )}
                     </Link>
                   </motion.div>
 
@@ -158,27 +146,29 @@ function Navbar() {
 
               <div className="h-8 w-px bg-white/20 mx-2"></div>
 
-              <motion.button
-                className="relative px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-lg shadow-blue-600/20 overflow-hidden group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/30 to-blue-400/0"
-                  animate={{
-                    x: ['-100%', '200%']
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                />
-                <span className="relative flex items-center gap-2">
-                  Submit Paper
-                  <Globe2 className="w-4 h-4" />
-                </span>
-              </motion.button>
+              <a href='https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FICCSAI2025' target='_blank'>
+                <motion.button
+                  className="relative px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-lg shadow-blue-600/20 overflow-hidden group cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/30 to-blue-400/0"
+                    animate={{
+                      x: ['-100%', '200%']
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                  <span className="relative flex items-center gap-2">
+                    Submit Paper
+                    <Globe2 className="w-4 h-4" />
+                  </span>
+                </motion.button>
+              </a>
             </div>
 
             <motion.button
@@ -222,15 +212,15 @@ function Navbar() {
             exit={{ opacity: 0 }}
             className="lg:hidden fixed inset-0 z-40 bg-white/90 backdrop-blur-lg pt-20"
           >
-            <motion.div 
+            <motion.div
               className="container mx-auto px-4 py-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
               {navItems.map((item, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="mb-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -248,9 +238,8 @@ function Navbar() {
                       {item.label}
                     </div>
                     {item.dropdown && (
-                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${
-                        activeDropdown === item.label ? 'rotate-180' : ''
-                      }`} />
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${activeDropdown === item.label ? 'rotate-180' : ''
+                        }`} />
                     )}
                   </motion.button>
 
@@ -285,12 +274,14 @@ function Navbar() {
                 </motion.div>
               ))}
 
-              <motion.button
-                className="w-full mt-6 px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-lg shadow-blue-600/20"
-                whileTap={{ scale: 0.95 }}
-              >
-                Submit Paper
-              </motion.button>
+              <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FICCSAI2025" target='_blank'>
+                <motion.button
+                  className="w-full mt-6 px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-lg shadow-blue-600/20 cursor-pointer"
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Submit Paper
+                </motion.button>
+              </a>
             </motion.div>
           </motion.div>
         )}

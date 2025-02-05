@@ -1,190 +1,539 @@
-import { motion } from "framer-motion"
-import { FileText, Layout, AlertTriangle, Type, FileImage, Clock, Download, ExternalLink } from "lucide-react"
+import React from 'react';
+import { motion } from 'framer-motion';
+import {
+  FileText,
+  CheckCircle2,
+  XCircle,
+  AlertTriangle,
+  FileCode,
+  Download,
+  Link,
+  FileSpreadsheet,
+  BookOpen,
+  Sparkles,
+  Clock,
+  FileCheck,
+  GraduationCap,
+  Zap,
+  BookMarked,
+  FileSearch,
+  ScrollText,
+  Table
+} from 'lucide-react';
+import { fadeIn, staggerContainer, cardHover, glowVariant } from '../Utils/animation';
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-}
+function Guidelines() {
+  const submissionGuidelines = [
+    'Papers must be written in English and should be original, unpublished work.',
+    'Maximum paper length is 6 pages in IEEE double-column format.',
+    'Use IEEE conference template for paper formatting.',
+    'Include author names, affiliations, and contact information.',
+    'Abstract should be 150-250 words.',
+    'Include 4-6 keywords below the abstract.',
+    'References should follow IEEE citation style.',
+    'All figures and tables must be properly numbered and captioned.',
+    'Equations should be numbered consecutively.',
+    'Use SI units throughout the paper.'
+  ];
 
-const bentoItems = [
-  {
-    title: "Paper Size",
-    icon: <FileText className="h-6 w-6" />,
-    content: 'US Letter (8.5" x 11")',
-  },
-  {
-    title: "Page Limit",
-    icon: <Layout className="h-6 w-6" />,
-    content: "6 pages (figures, tables, references included)",
-  },
-  {
-    title: "Additional Pages",
-    icon: <AlertTriangle className="h-6 w-6" />,
-    content: "₹1000 / $50 per extra page (max 2)",
-  },
-  {
-    title: "Formatting",
-    icon: <Type className="h-6 w-6" />,
-    content: "Double-column, single-spaced, 10pt Times New Roman",
-  },
-  {
-    title: "Margins",
-    icon: <Layout className="h-6 w-6" />,
-    content: 'Top: 1" (title page), 0.75" (elsewhere). Others: 0.75"',
-  },
-  {
-    title: "File Format",
-    icon: <FileImage className="h-6 w-6" />,
-    content: "PDF, max 5MB, all fonts embedded",
-  },
-  {
-    title: "Submission",
-    icon: <Clock className="h-6 w-6" />,
-    content: "Via Microsoft CMT, adhering to IEEE template",
-  },
-]
+  const formatRequirements = [
+    'Font: Times New Roman',
+    'Size: 10pt for main text, 24pt for paper title',
+    'Margins: 1 inch all sides',
+    'Column spacing: 0.25 inch',
+    'Headers and footers: as per template',
+    'Page numbers: bottom center',
+    'Section headings: 12pt, bold',
+    'Subsection headings: 10pt, bold',
+    'Line spacing: single',
+    'First paragraph: no indent',
+    'Subsequent paragraphs: 0.25 inch indent',
+    'Figure captions: 8pt, centered'
+  ];
 
-export default function Guidelines() {
+  const paperStructure = [
+    'Title and Author Information',
+    'Abstract and Keywords',
+    'Introduction',
+    'Literature Review',
+    'Methodology',
+    'Results and Discussion',
+    'Conclusion',
+    'Acknowledgments (if any)',
+    'References',
+    'Appendices (if any)'
+  ];
+
+  const commonMistakes = [
+    'Exceeding page limit',
+    'Incorrect formatting or template',
+    'Missing or incomplete author information',
+    'Plagiarism or self-plagiarism',
+    'Poor language quality',
+    'Missing or improperly formatted references',
+    'Inconsistent citation style',
+    'Low-quality figures or images',
+    'Insufficient literature review',
+    'Lack of research objectives'
+  ];
+
+  const ethicalGuidelines = [
+    'Original research only - no plagiarism',
+    'Proper attribution of sources',
+    'No simultaneous submissions',
+    'Accurate representation of results',
+    'Disclosure of conflicts of interest',
+    'Adherence to research ethics',
+    'Protection of human subjects',
+    'Data integrity and transparency',
+    'Author contribution statement',
+    'Funding source disclosure'
+  ];
+
+  const reviewCriteria = [
+    'Technical contribution and novelty',
+    'Research methodology',
+    'Experimental validation',
+    'Literature coverage',
+    'Paper organization and clarity',
+    'Technical correctness',
+    'Relevance to conference themes',
+    'Quality of presentation'
+  ];
+
+  const submissionProcess = [
+    {
+      title: 'Prepare Manuscript',
+      description: 'Format your paper according to the template and guidelines',
+      icon: FileText,
+      color: 'blue'
+    },
+    {
+      title: 'Check Requirements',
+      description: 'Ensure all formatting and content requirements are met',
+      icon: FileCheck,
+      color: 'green'
+    },
+    {
+      title: 'Submit Online',
+      description: 'Upload through the conference management system',
+      icon: FileSpreadsheet,
+      color: 'purple'
+    },
+    {
+      title: 'Track Status',
+      description: 'Monitor review progress through your dashboard',
+      icon: Clock,
+      color: 'orange'
+    }
+  ];
+
   return (
-    <div className="min-h-screen mt-12 bg-gradient-to-br from-gray-50 via-white to-blue-50 p-6 md:p-10">
-      <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="mb-12 text-center">
-        <h1 className="text-sm font-medium uppercase tracking-wider text-blue-600">Conference Guidelines</h1>
-        <h2 className="mt-2 text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-          Author&apos;s Guidelines
-        </h2>
-      </motion.div>
+    <section className="py-16 bg-gray-50 relative overflow-hidden">
+      {/* Background Effects */}
+      <motion.div
+        className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full opacity-5 blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.05, 0.1, 0.05]
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4">
+        {/* Header */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.3 }}
-          className="md:col-span-2 lg:col-span-3"
-          viewport={{ once: true }}
+          className="text-center mb-16"
+          variants={fadeIn}
+          initial="initial"
+          animate="animate"
         >
-          <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-            <p className="text-gray-700 leading-relaxed">
-              Authors are invited to submit original, high-quality, and previously unpublished research articles.
-              Submissions must not be under review by any other publication or conference. Each manuscript is limited to
-              a maximum of six (6) pages, including figures, tables, and references. Additional pages may be
-              accommodated with a nominal fee.
-            </p>
-          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
+            Submission Guidelines
+            <Sparkles className="w-8 h-8 text-blue-600" />
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Follow these comprehensive guidelines to ensure your paper meets all requirements and presents your research effectively
+          </p>
         </motion.div>
 
-        {bentoItems.map((item, index) => (
-          <motion.div
-            key={index}
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            transition={{ duration: 0.3, delay: index * 0.05 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 h-full">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-blue-600">{item.icon}</span>
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-              </div>
-              <p className="text-gray-700">{item.content}</p>
-            </div>
-          </motion.div>
-        ))}
-
+        {/* Submission Process Timeline */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.3, delay: 0.4 }}
-          className="md:col-span-2 lg:col-span-3"
-          viewport={{ once: true }}
+          className="mb-16"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
         >
-          <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Download Template
-              </h3>
-              <motion.a
-                href="https://www.ieee.org/conferences/publishing/templates.html"
-                target="_blank"
-                className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
+            <ScrollText className="w-6 h-6 text-blue-600" />
+            Submission Process
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {submissionProcess.map((step, index) => (
+              <motion.div
+                key={index}
+                className="relative"
+                variants={fadeIn}
+                whileHover="hover"
+                initial="rest"
+                animate="rest"
+                variants={cardHover}
               >
-                <Download className="mr-2 h-4 w-4" /> IEEE Template
-              </motion.a>
+                <div className="bg-white p-6 rounded-2xl shadow-lg relative overflow-hidden">
+                  <motion.div
+                    className={`absolute -top-20 -right-20 w-40 h-40 bg-${step.color}-500 rounded-full opacity-5 blur-3xl`}
+                    variants={glowVariant}
+                    initial="initial"
+                    animate="animate"
+                  />
+                  <div className={`w-12 h-12 rounded-xl bg-${step.color}-100 flex items-center justify-center mb-4`}>
+                    <step.icon className={`w-6 h-6 text-${step.color}-600`} />
+                  </div>
+                  <h4 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h4>
+                  <p className="text-gray-600 text-sm">{step.description}</p>
+                </div>
+                {index < submissionProcess.length - 1 && (
+                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gray-200" />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Quick Links */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+        >
+          {[
+            {
+              title: 'Download Templates',
+              icon: Download,
+              description: 'Get the IEEE conference paper templates (LaTeX & Word)',
+              color: 'blue',
+              link: '#'
+            },
+            {
+              title: 'Submit Paper',
+              icon: FileText,
+              description: 'Submit your paper through the conference management system',
+              color: 'green',
+              link: '#'
+            },
+            {
+              title: 'Author Guidelines',
+              icon: BookMarked,
+              description: 'Detailed instructions for paper preparation and submission',
+              color: 'purple',
+              link: '#'
+            }
+          ].map((item, index) => (
+            <motion.a
+              key={index}
+              href={item.link}
+              className="group"
+              variants={fadeIn}
+              whileHover="hover"
+              initial="rest"
+              animate="rest"
+              variants={cardHover}
+            >
+              <div className={`bg-white p-6 rounded-2xl shadow-lg relative overflow-hidden border border-${item.color}-100 group-hover:border-${item.color}-200 transition-colors h-full`}>
+                <motion.div
+                  className={`absolute -top-20 -right-20 w-40 h-40 bg-${item.color}-500 rounded-full opacity-5 group-hover:opacity-10 transition-opacity blur-2xl`}
+                  variants={glowVariant}
+                  initial="initial"
+                  animate="animate"
+                />
+                <div className={`w-12 h-12 rounded-xl bg-${item.color}-100 flex items-center justify-center mb-4`}>
+                  <item.icon className={`w-6 h-6 text-${item.color}-600`} />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            </motion.a>
+          ))}
+        </motion.div>
+
+        {/* Paper Structure and Format Requirements */}
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+        >
+          {/* Paper Structure */}
+          <motion.div
+            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
+            variants={fadeIn}
+            whileHover="hover"
+            initial="rest"
+            animate="rest"
+            variants={cardHover}
+          >
+            <motion.div
+              className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500 rounded-full opacity-5 blur-3xl"
+              variants={glowVariant}
+              initial="initial"
+              animate="animate"
+            />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                <Table className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Paper Structure</h3>
             </div>
-            <p className="text-gray-700">
-              Use the IEEE MS Word template provided for proper formatting. Papers violating formatting guidelines may
-              be rejected.
-            </p>
-          </div>
+            <ul className="space-y-4">
+              {paperStructure.map((item, index) => (
+                <motion.li
+                  key={index}
+                  className="flex items-start gap-3 text-gray-600"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
+                  {item}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Format Requirements */}
+          <motion.div
+            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
+            variants={fadeIn}
+            whileHover="hover"
+            initial="rest"
+            animate="rest"
+            variants={cardHover}
+          >
+            <motion.div
+              className="absolute -top-20 -right-20 w-40 h-40 bg-purple-500 rounded-full opacity-5 blur-3xl"
+              variants={glowVariant}
+              initial="initial"
+              animate="animate"
+            />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
+                <FileCode className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Format Requirements</h3>
+            </div>
+            <ul className="space-y-4">
+              {formatRequirements.map((requirement, index) => (
+                <motion.li
+                  key={index}
+                  className="flex items-start gap-3 text-gray-600"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2" />
+                  {requirement}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
         </motion.div>
 
+        {/* Submission Guidelines and Review Criteria */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.3, delay: 0.45 }}
-          className="md:col-span-2 lg:col-span-3"
-          viewport={{ once: true }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
         >
-          <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-            <h3 className="text-xl font-bold mb-4 text-blue-600">Important Dates</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center">
-                <Clock className="mr-2 h-5 w-5 text-blue-600" />
-                <span className="font-semibold">Submission Deadline:</span>
-                <span className="ml-2">August 15, 2023</span>
-              </li>
-              <li className="flex items-center">
-                <Clock className="mr-2 h-5 w-5 text-blue-600" />
-                <span className="font-semibold">Notification of Acceptance:</span>
-                <span className="ml-2">September 30, 2023</span>
-              </li>
-              <li className="flex items-center">
-                <Clock className="mr-2 h-5 w-5 text-blue-600" />
-                <span className="font-semibold">Camera-ready Submission:</span>
-                <span className="ml-2">October 15, 2023</span>
-              </li>
+          {/* Submission Guidelines */}
+          <motion.div
+            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
+            variants={fadeIn}
+            whileHover="hover"
+            initial="rest"
+            animate="rest"
+            variants={cardHover}
+          >
+            <motion.div
+              className="absolute -top-20 -right-20 w-40 h-40 bg-green-500 rounded-full opacity-5 blur-3xl"
+              variants={glowVariant}
+              initial="initial"
+              animate="animate"
+            />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+                <CheckCircle2 className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Submission Guidelines</h3>
+            </div>
+            <ul className="space-y-4">
+              {submissionGuidelines.map((guideline, index) => (
+                <motion.li
+                  key={index}
+                  className="flex items-start gap-3 text-gray-600"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 mt-2" />
+                  {guideline}
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
+
+          {/* Review Criteria */}
+          <motion.div
+            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
+            variants={fadeIn}
+            whileHover="hover"
+            initial="rest"
+            animate="rest"
+            variants={cardHover}
+          >
+            <motion.div
+              className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500 rounded-full opacity-5 blur-3xl"
+              variants={glowVariant}
+              initial="initial"
+              animate="animate"
+            />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                <FileSearch className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Review Criteria</h3>
+            </div>
+            <ul className="space-y-4">
+              {reviewCriteria.map((criteria, index) => (
+                <motion.li
+                  key={index}
+                  className="flex items-start gap-3 text-gray-600"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
+                  {criteria}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.3, delay: 0.5 }}
-          className="md:col-span-2 lg:col-span-3"
-          viewport={{ once: true }}
-        >
-          <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-            <h3 className="text-xl font-bold mb-4 text-blue-600">Additional Resources</h3>
-            <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-blue-600 hover:underline flex items-center">
-                  <ExternalLink className="mr-2 h-5 w-5" />
-                  IEEE Conference Policies
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-600 hover:underline flex items-center">
-                  <ExternalLink className="mr-2 h-5 w-5" />
-                  Frequently Asked Questions
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-600 hover:underline flex items-center">
-                  <ExternalLink className="mr-2 h-5 w-5" />
-                  Contact Organizing Committee
-                </a>
-              </li>
+        {/* Common Mistakes and Ethical Guidelines */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Common Mistakes */}
+          <motion.div
+            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
+            variants={fadeIn}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.div
+              className="absolute -top-20 -right-20 w-40 h-40 bg-red-500 rounded-full opacity-5 blur-3xl"
+              variants={glowVariant}
+              initial="initial"
+              animate="animate"
+            />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
+                <XCircle className="w-6 h-6 text-red-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Common Mistakes to Avoid</h3>
+            </div>
+            <ul className="space-y-4">
+              {commonMistakes.map((mistake, index) => (
+                <motion.li
+                  key={index}
+                  className="flex items-start gap-3 text-gray-600"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2" />
+                  {mistake}
+                </motion.li>
+              ))}
             </ul>
+          </motion.div>
+
+          {/* Ethical Guidelines */}
+          <motion.div
+            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
+            variants={fadeIn}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.div
+              className="absolute -top-20 -right-20 w-40 h-40 bg-orange-500 rounded-full opacity-5 blur-3xl"
+              variants={glowVariant}
+              initial="initial"
+              animate="animate"
+            />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
+                <AlertTriangle className="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Ethical Guidelines</h3>
+            </div>
+            <ul className="space-y-4">
+              {ethicalGuidelines.map((guideline, index) => (
+                <motion.li
+                  key={index}
+                  className="flex items-start gap-3 text-gray-600"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-400 mt-2" />
+                  {guideline}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Resources Section */}
+        <motion.div
+          className="mt-16"
+          variants={fadeIn}
+          initial="initial"
+          animate="animate"
+        >
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
+            <BookOpen className="w-6 h-6 text-blue-600" />
+            Additional Resources
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {[
+              { label: 'IEEE PDF Checker', icon: FileText, color: 'blue' },
+              { label: 'LaTeX Template', icon: FileCode, color: 'green' },
+              { label: 'Word Template', icon: FileSpreadsheet, color: 'purple' },
+              { label: 'Reference Guide', icon: BookMarked, color: 'orange' },
+            ].map((resource, index) => (
+              <motion.a
+                key={index}
+                href="#"
+                className={`flex items-center gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow text-gray-600 hover:text-${resource.color}-600 group`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className={`w-10 h-10 rounded-lg bg-${resource.color}-100 flex items-center justify-center group-hover:bg-${resource.color}-200 transition-colors`}>
+                  <resource.icon className={`w-5 h-5 text-${resource.color}-600`} />
+                </div>
+                {resource.label}
+              </motion.a>
+            ))}
           </div>
         </motion.div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
+
+export default Guidelines;
