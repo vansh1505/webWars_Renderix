@@ -23,7 +23,7 @@ Follow these steps to set up the project locally:
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/vansh1505/webWars_Renderix
+   git clone https://github.com/vansh1505/webWars_Renderix.git
    cd webWars_Renderix
    ```
 
@@ -44,6 +44,8 @@ Follow these steps to set up the project locally:
 ## 🌍 Deployment
 
 🔗 **Live Link:** [webwars-renderix](https://webwars-renderix.netlify.app/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2ac21098-93eb-4246-b403-038423bb67fd/deploy-status)](https://app.netlify.com/sites/webwars-renderix/deploys)
 
 ---
 
