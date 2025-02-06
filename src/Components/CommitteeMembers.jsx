@@ -1,254 +1,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Users, 
+import {
+  User,
+  Users,
   Building2,
   Mail,
   Award,
   Sparkles,
-  GraduationCap,
   BookOpen,
   Network,
   Globe2,
   Star,
   Shield,
   Quote,
-  ExternalLink,
-  ChevronLeft,
-  ChevronRight
+  Briefcase,
+  DollarSign,
+  Truck,
+  Monitor,
+  Camera,
+  Coffee,
+  Globe,
+  UserCheck
 } from 'lucide-react';
-
-// Conference Committee Data
-const conferenceCommittee = {
-  chiefPatron: [
-    {
-      name: 'Shri Suneel Galgotia',
-      title: 'Hon\'ble Chancellor',
-      institution: 'Galgotias University, India',
-      image: '/persons/sunilSir.jpeg',
-      quote: 'Driving innovation through academic excellence',
-      linkedin: '#'
-    }
-  ],
-  patrons: [
-    {
-      name: 'Prof.(Dr.) S.N. Singh',
-      title: 'Director',
-      institution: 'IIITM, Gwalior, India',
-      image: '/persons/snsingh.jpeg',
-      quote: 'Empowering future leaders in technology'
-    },
-    {
-      name: 'Dr. Dhruv Galgotia',
-      title: 'CEO',
-      institution: 'Galgotias University, India',
-      image: '/persons/dhruvSir.jpeg',
-      quote: 'Empowering future leaders in technology',
-      linkedin: '#'
-    },
-    {
-      name: 'Prof.(Dr.) M.K. Babu Kayala',
-      title: 'VC',
-      institution: 'Galgotias University, India',
-      image: '/persons/vcsir.jpg',
-      quote: 'Empowering future leaders in technology'
-    },
-    {
-      name: 'Ms. Aradhana Galgotia',
-      title: 'Director Operations',
-      institution: 'Galgotias University, India',
-      image: '/persons/aradhanaMaam.jpg',
-      quote: 'Empowering future leaders in technology'
-    }
-  ],
-  conferenceGeneralChair: [
-    {
-      name: 'Prof.(Dr.) Avadhesh Kumar',
-      title: 'Pro-VC',
-      institution: 'Galgotias University, India',
-      image: '/persons/pvcsir.jpg',
-      quote: 'Advancing the frontiers of computer science',
-      linkedin: '#',
-      expertise: ['Artificial Intelligence', 'Machine Learning', 'Data Science']
-    },
-    {
-      name: 'Dr. Yogesh S. Chauhan',
-      title: 'Professor',
-      institution: 'Indian Institute of Technology Kanpur, India',
-      image: '/persons/yogesh1.png',
-      quote: 'Advancing the frontiers of computer science',
-      linkedin: '#',
-      expertise: ['Artificial Intelligence', 'Machine Learning', 'Data Science']
-    }
-  ],
-  conferenceChair: [
-    {
-      name: 'Dr. Parma Nand',
-      title: 'Professor & Head',
-      department: 'Department of Computer Science & Engineering',
-      institution: 'Galgotias University',
-      image: '/persons/parmanand.jpg',
-      quote: 'Building bridges between academia and industry',
-      linkedin: '#',
-      expertise: ['Computer Networks', 'Security', 'IoT']
-    }
-  ],
-  conferenceOrganizingChair: [
-    {
-      name: 'Dr. Vimal Kumar',
-      title: 'Professor',
-      institution: 'Galgotias University',
-      quote: 'Organizing events that empower innovation and research',
-      linkedin: '#'
-    },
-    {
-      name: 'Dr. Gaurav Agarwal',
-      title: 'Professor',
-      institution: 'Galgotias University',
-      quote: 'Innovating the future through events and conferences',
-      linkedin: '#'
-    },
-    {
-      name: 'Dr. Abdul Aleem',
-      title: 'Professor',
-      institution: 'Galgotias University',
-      quote: 'Leading with creativity and excellence in event management',
-      linkedin: '#'
-    }
-  ],
-  conferenceTechnicalChair: [
-    {
-      name: 'Dr. Suneeta Yadav',
-      title: 'Dean, SCSE',
-      institution: 'Galgotias University',
-      quote: 'Technical excellence leads the way forward',
-      linkedin: '#'
-    },
-    {
-      name: 'Dr. V. Khemchandani',
-      title: 'Dean, SCAT',
-      institution: 'Galgotias University',
-      quote: 'Shaping the future with technical excellence',
-      linkedin: '#'
-    },
-    {
-      name: 'Dr. Anurag Singh',
-      title: 'Associate Professor',
-      institution: 'NIT Delhi',
-      quote: 'Enhancing technical research through collaboration',
-      linkedin: '#'
-    }
-  ],
-  publicationChairs: [
-    {
-      name: 'Prof. Shraddha Sagar',
-      institution: 'Galgotias University',
-      quote: 'Publications lead to groundbreaking innovations',
-      linkedin: '#'
-    },
-    {
-      name: 'Prof. Ashok K. Yadav',
-      institution: 'Galgotias University',
-      quote: 'Bringing research to the forefront',
-      linkedin: '#'
-    }
-  ],
-  conferenceOrganizingCoChairs: [
-    {
-      name: 'Prof. Meenakshi Awasthi',
-      institution: 'Galgotias University, Greater Noida, India'
-    },
-    {
-      name: 'Prof. Deepak Soni',
-      institution: 'Galgotias University, Greater Noida, India'
-    },
-    {
-      name: 'Prof. Sunil Bharti',
-      institution: 'GCET, Greater Noida, India'
-    }
-  ],
-  conferenceTechnicalCoChairs: [
-    {
-      name: 'Prof. Ravi Sharma',
-      institution: 'Galgotias University, Greater Noida, India'
-    },
-    {
-      name: 'Prof. Tarun Kumar',
-      institution: 'Galgotias University, Greater Noida, India'
-    },
-    {
-      name: 'Dr. Manish Kumar',
-      institution: 'Galgotias University, Greater Noida, India'
-    },
-    {
-      name: 'Dr. Sonu Jha',
-      institution: 'Galgotias University, Greater Noida, India'
-    },
-    {
-      name: 'Dr. Sunil Kumar',
-      institution: 'Galgotias University, Greater Noida, India'
-    }
-  ],
-  conferenceSecretaries: [
-    {
-      name: 'Dr. K. K. Agrawal',
-      institution: 'Galgotias University, Greater Noida, India'
-    },
-    {
-      name: 'Dr. Vipin Rai',
-      institution: 'Galgotias University, Greater Noida, India'
-    },
-    {
-      name: 'Prof. Arunendra Mani Tripathi',
-      institution: 'Galgotias University, Greater Noida, India'
-    },
-    {
-      name: 'Prof. Avneesh Kumar',
-      institution: 'Galgotias University, Greater Noida, India'
-    }
-  ],
-  internationalAdvisoryCommittee: [
-    {
-      name: 'Dr. Liudong Xing',
-      institution: 'Electrical and Computer Engineering Department, University of Massachusetts, Dartmouth'
-    },
-    {
-      name: 'Dr. LING Tok Wang',
-      institution: 'Emeritus Professor, Department of Computer Science, National University of Singapore, Singapore'
-    },
-    {
-      name: 'Dr. Norjihan Abdul Ghani',
-      institution: 'HoD, Department of Information Systems, Universiti of MALAYA, Malaysia'
-    }
-  ],
-  nationalAdvisoryCommittee: [
-    {
-      name: 'Prof. Adarsh Anand',
-      institution: 'University Of Delhi, Delhi, India'
-    },
-    {
-      name: 'Prof. (Dr.) Chandra Prakash',
-      institution: 'National Institute of Technology, Delhi, India'
-    },
-    {
-      name: 'Prof. (Dr.) Sahil',
-      institution: 'National Institute of Technology, Delhi, India'
-    }
-  ]
-};
+import { MembersData } from '../data/MembersData';
 
 function CommitteeMembers() {
-  const [activeSlide, setActiveSlide] = React.useState(0);
-  const scrollContainerRef = React.useRef(null);
-
-  const handleScroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const scrollAmount = direction === 'left' ? -container.offsetWidth : container.offsetWidth;
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
   const renderCommitteeSection = (title, members, icon, variant = "default") => {
     if (!members || members.length === 0) return null;
 
@@ -265,38 +41,12 @@ function CommitteeMembers() {
           <div className="h-0.5 w-12 bg-gradient-to-r from-blue-600 to-transparent" />
         </div>
 
-        <div className="relative group">
-          {members.length > 3 && (
-            <>
-              <button 
-                onClick={() => handleScroll('left')}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-10 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-lg text-blue-600 hover:bg-blue-50 transition-colors opacity-0 group-hover:opacity-100 disabled:opacity-0"
-                disabled={activeSlide === 0}
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button 
-                onClick={() => handleScroll('right')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-10 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-lg text-blue-600 hover:bg-blue-50 transition-colors opacity-0 group-hover:opacity-100"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </>
-          )}
-
-          <div 
-            ref={scrollContainerRef}
-            className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory hide-scrollbar"
-          >
-            {members.map((member, index) => (
-              <div 
-                key={index}
-                className="flex-none w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-start"
-              >
-                <CommitteeCard member={member} variant={variant} />
-              </div>
-            ))}
-          </div>
+        <div className={`grid grid-cols-1 ${members.length > 1 ? 'md:grid-cols-2 lg:grid-cols-3' : 'justify-center'} gap-8`}>
+          {members.map((member, index) => (
+            <div key={index} className="flex justify-center">
+              <CommitteeCard member={member} variant={variant} />
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -306,7 +56,7 @@ function CommitteeMembers() {
     <section className="py-16 bg-gradient-to-b from-gray-50 to-white mt-12">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -322,19 +72,29 @@ function CommitteeMembers() {
         </motion.div>
 
         {/* Committee Sections */}
-        {renderCommitteeSection('Chief Patron', conferenceCommittee.chiefPatron, Award, 'special')}
-        {renderCommitteeSection('Patrons', conferenceCommittee.patrons, Shield, 'special')}
-        {renderCommitteeSection('Conference General Chair', conferenceCommittee.conferenceGeneralChair, Building2, 'special')}
-        {renderCommitteeSection('Conference Chair', conferenceCommittee.conferenceChair, Users, 'special')}
-        {renderCommitteeSection('Conference Organizing Chair', conferenceCommittee.conferenceOrganizingChair, Star)}
-        {renderCommitteeSection('Conference Technical Chair', conferenceCommittee.conferenceTechnicalChair, BookOpen)}
-        {renderCommitteeSection('Publication Chairs', conferenceCommittee.publicationChairs, BookOpen)}
-        {renderCommitteeSection('Conference Organizing Co-Chairs', conferenceCommittee.conferenceOrganizingCoChairs, Users)}
-        {renderCommitteeSection('Conference Technical Co-Chairs', conferenceCommittee.conferenceTechnicalCoChairs, Network)}
-        {renderCommitteeSection('Conference Secretaries', conferenceCommittee.conferenceSecretaries, Users)}
-        {renderCommitteeSection('International Advisory Committee', conferenceCommittee.internationalAdvisoryCommittee, Globe2)}
-        {renderCommitteeSection('National Advisory Committee', conferenceCommittee.nationalAdvisoryCommittee, Network)}
-
+        {renderCommitteeSection('Chief Patron', MembersData.chiefPatron, Award, 'special')}
+        {renderCommitteeSection('Patrons', MembersData.patrons, Shield, 'special')}
+        {renderCommitteeSection('Conference General Chair', MembersData.conferenceGeneralChair, Building2, 'special')}
+        {renderCommitteeSection('Conference Chair', MembersData.conferenceChair, Users, 'special')}
+        {renderCommitteeSection('Conference Organizing Chair', MembersData.conferenceOrganizingChair, Star)}
+        {renderCommitteeSection('Conference Technical Chair', MembersData.conferenceTechnicalChair, BookOpen)}
+        {renderCommitteeSection('Publication Chairs', MembersData.publicationChairs, BookOpen)}
+        {renderCommitteeSection('Conference Organizing Co-Chairs', MembersData.conferenceOrganizingCoChairs, Users)}
+        {renderCommitteeSection('Conference Technical Co-Chairs', MembersData.conferenceTechnicalCoChairs, Network)}
+        {renderCommitteeSection('Conference Secretaries', MembersData.conferenceSecretaries, Mail)}
+        {renderCommitteeSection('International Advisory Chair', MembersData.InternationalAdvisoryChairs, Globe)}
+        {renderCommitteeSection('Publication Co-Chairs', MembersData.publicationCoChairs, BookOpen)}
+        {renderCommitteeSection('Publicity Chairs', MembersData.publicityChairs, Camera)}
+        {renderCommitteeSection('Sponsorship and Industry Chairs', MembersData.sponsorshipIndustryChairs, Briefcase)}
+        {renderCommitteeSection('Event Organising Chairs', MembersData.eventOrganisingChair, Star)}
+        {renderCommitteeSection('Finance Chairs', MembersData.financeChairs, DollarSign)}
+        {renderCommitteeSection('Transport Chairs', MembersData.transportChairs, Truck)}
+        {renderCommitteeSection('Website & Graphics Chairs', MembersData.websiteGraphicsChairs, Monitor)}
+        {renderCommitteeSection('Media Chairs', MembersData.mediaChairs, Camera)}
+        {renderCommitteeSection('Hospitality Chairs', MembersData.hospitalityChairs, Coffee)}
+        {renderCommitteeSection('International Advisory Committee', MembersData.internationalAdvisoryCommittee, Globe)}
+        {renderCommitteeSection('National Advisory Committee', MembersData.nationalAdvisoryCommittee, UserCheck)}
+        {renderCommitteeSection('Technical Program Committee', MembersData.technicalProgramCommittee, Network)}
       </div>
     </section>
   );
@@ -343,8 +103,8 @@ function CommitteeMembers() {
 const CommitteeCard = ({ member, variant = "default" }) => {
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6 }
     },
@@ -364,15 +124,17 @@ const CommitteeCard = ({ member, variant = "default" }) => {
         viewport={{ once: true }}
         className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl shadow-xl overflow-hidden group h-full"
       >
-        <div className="p-6">
+        <div className="p-8">
           <div className="flex flex-col items-center text-center">
-            <div className="relative w-32 h-32 mb-4">
+            <div className="relative w-32 h-32 mb-4 flex justify-center items-center">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-indigo-400/10 rounded-full blur-xl" />
-              <img 
-                src={member.image || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300&h=300'} 
-                alt={member.name}
-                className="w-full h-full object-cover rounded-full ring-4 ring-white"
-              />
+              {member.image ?
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover rounded-full ring-4 ring-white"
+                /> : <User className="w-24 h-24 text-blue-900" />
+              }
             </div>
             <h4 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h4>
             <p className="text-blue-600 font-medium mb-1">{member.title}</p>
@@ -386,7 +148,7 @@ const CommitteeCard = ({ member, variant = "default" }) => {
             {member.expertise && (
               <div className="flex flex-wrap gap-1 justify-center">
                 {member.expertise.map((skill, index) => (
-                  <span 
+                  <span
                     key={index}
                     className="px-2 py-0.5 bg-blue-100 text-blue-600 rounded-full text-xs font-medium"
                   >
@@ -410,14 +172,16 @@ const CommitteeCard = ({ member, variant = "default" }) => {
       viewport={{ once: true }}
       className="bg-white rounded-2xl shadow-lg overflow-hidden group h-full"
     >
-      <div className="p-6">
+      <div className="p-8">
         <div className="flex flex-col items-center text-center">
-          <div className="w-24 h-24 mb-4">
-            <img 
-              src={member.image || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300&h=300'} 
-              alt={member.name}
-              className="w-full h-full object-cover rounded-full"
-            />
+          <div className="w-24 h-24 mb-4 items-center">
+            {member.image ?
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover rounded-full ring-4 ring-white"
+              /> : <User className="w-24 h-24 text-blue-900" />
+            }
           </div>
           <h4 className="text-lg font-bold text-gray-900 mb-1">{member.name}</h4>
           {member.title && <p className="text-blue-600 font-medium mb-1">{member.title}</p>}
