@@ -5,9 +5,8 @@ import Navbar from './Components/Navbar'
 import Home from './Components/Home'
 import Guidelines from './Components/Guidelines'
 import Registration from './Components/Registration'
-import CommotteeMembers from './Components/CommitteeMembers'
-import About from './Components/About'
-import Tracks from './Components/Topics'
+import CommitteeMembers from './Components/CommitteeMembers'
+import Speakers from './Components/Speakers'
 const App = () => {
   return (
     <>
@@ -16,7 +15,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/guidelines" element={<Guidelines />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="/members" element={<CommotteeMembers />} />
+        <Route path="/members" element={<CommitteeMembers />} />
+        <Route path="/speakers" element={<Speakers />} />
       </Routes>
       <Footer />
     </>

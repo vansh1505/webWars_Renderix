@@ -137,7 +137,7 @@ const CommitteeCard = ({ member, variant = "default" }) => {
               }
             </div>
             <h4 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h4>
-            <p className="text-blue-600 font-medium mb-1">{member.title}</p>
+            <p className="text-blue-600 font-medium mb-1 flex gap-1 items-center"><Award className='h-4 w-4'/>{member.title}</p>
             <p className="text-sm text-gray-600 mb-3">{member.institution}</p>
             {member.quote && (
               <div className="flex items-center gap-2 mb-3 text-sm text-gray-500 italic">
@@ -170,7 +170,7 @@ const CommitteeCard = ({ member, variant = "default" }) => {
       whileInView="visible"
       whileHover="hover"
       viewport={{ once: true }}
-      className="bg-white rounded-2xl shadow-lg overflow-hidden group h-full"
+      className="bg-white rounded-2xl shadow-lg overflow-hidden group h-full hover:border-2 hover:border-blue-500 hover:bg-blue-50"
     >
       <div className="p-8">
         <div className="flex flex-col items-center text-center">
@@ -183,9 +183,9 @@ const CommitteeCard = ({ member, variant = "default" }) => {
               /> : <User className="w-24 h-24 text-blue-900" />
             }
           </div>
-          <h4 className="text-lg font-bold text-gray-900 mb-1">{member.name}</h4>
-          {member.title && <p className="text-blue-600 font-medium mb-1">{member.title}</p>}
-          <p className="text-sm text-gray-600">{member.institution}</p>
+          <h4 className="text-lg font-bold text-gray-900 mb-2">{member.name}</h4>
+          {member.title && <p className="text-blue-600 font-medium mb-2 flex gap-1"><Award/>{member.title}</p>}
+          <p className="text-sm flex items-center gap-1 text-gray-600"><Building2 className='h-4 w-4'/>{member.institution}</p>
         </div>
       </div>
     </motion.div>

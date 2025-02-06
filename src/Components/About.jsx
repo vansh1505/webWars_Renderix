@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Globe2, Sparkles } from 'lucide-react';
-import { fadeIn, cardHover, glowVariant,staggerContainer } from '../Utils/animation';
+import { glowVariant,staggerContainer } from '../Utils/animation';
 
 function About() {
   return (
@@ -12,7 +12,7 @@ function About() {
       animate="animate"
     >
       <motion.div 
-        className="bg-white p-8 shadow-lg relative overflow-hidden"
+        className="bg-white p-8 relative overflow-hidden"
       >
         <motion.div 
           className="absolute -top-20 -left-20 w-40 h-40 bg-blue-500 opacity-10 blur-3xl"
