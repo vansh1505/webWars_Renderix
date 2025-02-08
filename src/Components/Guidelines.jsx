@@ -1,16 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import {
-  FileText,
-  CheckCircle2,
-  XCircle,
-  AlertTriangle,
-  FileCode,
+import { 
+  FileText, 
+  CheckCircle2, 
+  XCircle, 
+  AlertTriangle, 
+  FileCode, 
   Download,
   Link,
   FileSpreadsheet,
   BookOpen,
-  Sparkles,
   Clock,
   FileCheck,
   GraduationCap,
@@ -18,518 +17,255 @@ import {
   BookMarked,
   FileSearch,
   ScrollText,
-  Table
+  CalendarCheck,
+  ArrowRight,
+  Sparkles,
+  DollarSign,
+  FileWarning,
+  FileQuestion,
+  Info
 } from 'lucide-react';
-import { fadeIn, staggerContainer, cardHover, glowVariant } from '../Utils/animation';
 
 function Guidelines() {
-  const submissionGuidelines = [
-    'Papers must be written in English and should be original, unpublished work.',
-    'Maximum paper length is 6 pages in IEEE double-column format.',
-    'Use IEEE conference template for paper formatting.',
-    'Include author names, affiliations, and contact information.',
-    'Abstract should be 150-250 words.',
-    'Include 4-6 keywords below the abstract.',
-    'References should follow IEEE citation style.',
-    'All figures and tables must be properly numbered and captioned.',
-    'Equations should be numbered consecutively.',
-    'Use SI units throughout the paper.'
-  ];
-
-  const formatRequirements = [
-    'Font: Times New Roman',
-    'Size: 10pt for main text, 24pt for paper title',
-    'Margins: 1 inch all sides',
-    'Column spacing: 0.25 inch',
-    'Headers and footers: as per template',
-    'Page numbers: bottom center',
-    'Section headings: 12pt, bold',
-    'Subsection headings: 10pt, bold',
-    'Line spacing: single',
-    'First paragraph: no indent',
-    'Subsequent paragraphs: 0.25 inch indent',
-    'Figure captions: 8pt, centered'
-  ];
-
-  const paperStructure = [
-    'Title and Author Information',
-    'Abstract and Keywords',
-    'Introduction',
-    'Literature Review',
-    'Methodology',
-    'Results and Discussion',
-    'Conclusion',
-    'Acknowledgments (if any)',
-    'References',
-    'Appendices (if any)'
-  ];
-
-  const commonMistakes = [
-    'Exceeding page limit',
-    'Incorrect formatting or template',
-    'Missing or incomplete author information',
-    'Plagiarism or self-plagiarism',
-    'Poor language quality',
-    'Missing or improperly formatted references',
-    'Inconsistent citation style',
-    'Low-quality figures or images',
-    'Insufficient literature review',
-    'Lack of research objectives'
-  ];
-
-  const ethicalGuidelines = [
-    'Original research only - no plagiarism',
-    'Proper attribution of sources',
-    'No simultaneous submissions',
-    'Accurate representation of results',
-    'Disclosure of conflicts of interest',
-    'Adherence to research ethics',
-    'Protection of human subjects',
-    'Data integrity and transparency',
-    'Author contribution statement',
-    'Funding source disclosure'
-  ];
-
-  const reviewCriteria = [
-    'Technical contribution and novelty',
-    'Research methodology',
-    'Experimental validation',
-    'Literature coverage',
-    'Paper organization and clarity',
-    'Technical correctness',
-    'Relevance to conference themes',
-    'Quality of presentation'
-  ];
-
-  const submissionProcess = [
-    {
-      title: 'Prepare Manuscript',
-      description: 'Format your paper according to the template and guidelines',
-      icon: FileText,
-      color: 'blue'
-    },
-    {
-      title: 'Check Requirements',
-      description: 'Ensure all formatting and content requirements are met',
-      icon: FileCheck,
-      color: 'green'
-    },
-    {
-      title: 'Submit Online',
-      description: 'Upload through the conference management system',
-      icon: FileSpreadsheet,
-      color: 'purple'
-    },
-    {
-      title: 'Track Status',
-      description: 'Monitor review progress through your dashboard',
-      icon: Clock,
-      color: 'orange'
-    }
-  ];
-
   return (
-    <section className="py-16 bg-gray-50 relative overflow-hidden">
-      {/* Background Effects */}
-      <motion.div
-        className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full opacity-5 blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.05, 0.1, 0.05]
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-
-      <div className="container mx-auto px-4">
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4 mt-12">
         {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          variants={fadeIn}
-          initial="initial"
-          animate="animate"
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            Submission Guidelines
-            <Sparkles className="w-8 h-8 text-blue-600" />
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Follow these comprehensive guidelines to ensure your paper meets all requirements and presents your research effectively
+          <div 
+            className="inline-flex items-center justify-center p-2 bg-blue-50 rounded-2xl mb-2">
+            <BookMarked className="w-6 h-6 text-blue-600/80 mr-2" />
+            <span className="text-blue-600 font-semibold">Conference Guidelines</span>
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Author Guidelines</h2>
+          <div class="w-32 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6 rounded-full"></div>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Authors are invited to submit original, high-quality, and previously unpublished research articles. 
+            Submissions must not be under review by any other publication or conference.
           </p>
         </motion.div>
 
-        {/* Submission Process Timeline */}
-        <motion.div
-          className="mb-16"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-            <ScrollText className="w-6 h-6 text-blue-600" />
-            Submission Process
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {submissionProcess.map((step, index) => (
-              <motion.div
-                key={index}
-                className="relative"
-                variants={fadeIn}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-                variants={cardHover}
-              >
-                <div className="bg-white p-6 rounded-2xl shadow-lg relative overflow-hidden">
-                  <motion.div
-                    className={`absolute -top-20 -right-20 w-40 h-40 bg-${step.color}-500 rounded-full opacity-5 blur-3xl`}
-                    variants={glowVariant}
-                    initial="initial"
-                    animate="animate"
-                  />
-                  <div className={`w-12 h-12 rounded-xl bg-${step.color}-100 flex items-center justify-center mb-4`}>
-                    <step.icon className={`w-6 h-6 text-${step.color}-600`} />
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Quick Actions - Spans 3 columns */}
+          <motion.div 
+            className="col-span-full bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                {
+                  title: 'IEEE Template',
+                  icon: Download,
+                  description: 'Download conference paper template',
+                  action: 'Download Now',
+                  link: 'https://www.ieee.org/conferences/publishing/templates.html'
+                },
+                {
+                  title: 'Submit Paper',
+                  icon: FileText,
+                  description: 'Submit via Microsoft CMT',
+                  action: 'Submit Paper',
+                  link: 'https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FICCSAI2025'
+                },
+                {
+                  title: 'E-Copyright',
+                  icon: FileCheck,
+                  description: 'IEEE copyright process document',
+                  action: 'Download',
+                  link: '/ieee-copyright-process.pdf'
+                }
+              ].map((item, index) => (
+                <motion.a
+                  key={index}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-shadow"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h4>
-                  <p className="text-gray-600 text-sm">{step.description}</p>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                    <p className="text-sm text-gray-600">{item.description}</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-blue-600" />
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Paper Format Requirements */}
+          <motion.div 
+            className="row-span-2 bg-gray-50 rounded-2xl p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                <FileCode className="w-5 h-5 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">Paper Format</h3>
+            </div>
+            <div className="space-y-4">
+              {[
+                { title: 'Paper Size', desc: 'US Letter (8.5" x 11")' },
+                { title: 'Length', desc: 'Maximum 6 pages (including figures, tables, references)' },
+                { title: 'Font', desc: 'Times New Roman, 10pt, double-column layout' },
+                { title: 'Top Margin', desc: '1" (25mm) on title page, 0.75" (19mm) elsewhere' },
+                { title: 'Other Margins', desc: '0.75" (19mm) for left, right, and bottom' },
+                { title: 'File Format', desc: 'PDF with embedded fonts, max 5MB' },
+                { title: 'Page Numbers', desc: 'Do not include page numbers' }
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">{item.title}</h4>
+                    <p className="text-sm text-gray-600">{item.desc}</p>
+                  </div>
                 </div>
-                {index < submissionProcess.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gray-200" />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* Quick Links */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          {[
-            {
-              title: 'Download Templates',
-              icon: Download,
-              description: 'Get the IEEE conference paper templates (LaTeX & Word)',
-              color: 'blue',
-              link: '#'
-            },
-            {
-              title: 'Submit Paper',
-              icon: FileText,
-              description: 'Submit your paper through the conference management system',
-              color: 'green',
-              link: '#'
-            },
-            {
-              title: 'Author Guidelines',
-              icon: BookMarked,
-              description: 'Detailed instructions for paper preparation and submission',
-              color: 'purple',
-              link: '#'
-            }
-          ].map((item, index) => (
-            <motion.a
-              key={index}
-              href={item.link}
-              className="group"
-              variants={fadeIn}
-              whileHover="hover"
-              initial="rest"
-              animate="rest"
-              variants={cardHover}
-            >
-              <div className={`bg-white p-6 rounded-2xl shadow-lg relative overflow-hidden border border-${item.color}-100 group-hover:border-${item.color}-200 transition-colors h-full`}>
-                <motion.div
-                  className={`absolute -top-20 -right-20 w-40 h-40 bg-${item.color}-500 rounded-full opacity-5 group-hover:opacity-10 transition-opacity blur-2xl`}
-                  variants={glowVariant}
-                  initial="initial"
-                  animate="animate"
-                />
-                <div className={`w-12 h-12 rounded-xl bg-${item.color}-100 flex items-center justify-center mb-4`}>
-                  <item.icon className={`w-6 h-6 text-${item.color}-600`} />
+          {/* Additional Pages & Fees */}
+          <motion.div 
+            className="bg-gray-50 rounded-2xl p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
+                <DollarSign className="w-5 h-5 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">Additional Pages</h3>
+            </div>
+            <div className="space-y-4">
+              <p className="text-gray-600">Two additional pages allowed with extra charges:</p>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-2 text-gray-600">
+                  <ArrowRight className="w-4 h-4 text-green-500" />
+                  <span>Indian Authors: ₹1,000 per page</span>
+                </li>
+                <li className="flex items-center gap-2 text-gray-600">
+                  <ArrowRight className="w-4 h-4 text-green-500" />
+                  <span>International Authors: $50 per page</span>
+                </li>
+              </ul>
+            </div>
+          </motion.div>
+
+          {/* Important Guidelines */}
+          <motion.div 
+            className="bg-gray-50 rounded-2xl p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center">
+                <FileWarning className="w-5 h-5 text-amber-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">Important Notes</h3>
+            </div>
+            <ul className="space-y-3">
+              {[
+                'Papers must be original and unpublished',
+                'No simultaneous submissions allowed',
+                'English language only',
+                'Must follow IEEE two-column format',
+                'At least one author must present'
+              ].map((item, index) => (
+                <li key={index} className="flex items-center gap-2 text-gray-600">
+                  <Info className="w-5 h-5 text-amber-500" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* IEEE Xplore Requirements */}
+          <motion.div 
+            className="col-span-2 bg-gray-50 rounded-2xl p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">
+                <FileQuestion className="w-5 h-5 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">IEEE Xplore Publication</h3>
+            </div>
+            <div className="space-y-4">
+              <p className="text-gray-600">Papers meeting quality standards will be submitted to IEEE Xplore. Requirements:</p>
+              <ul className="space-y-3">
+                {[
+                  'Must be presented at the conference',
+                  'Authors must complete paid registration',
+                  'Final paper must be IEEE Xplore-compatible',
+                  'Must address all reviewer comments',
+                  'No refunds for cancellations'
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-2 text-gray-600">
+                    <ArrowRight className="w-4 h-4 text-purple-500 mt-1" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+
+          {/* Important Dates */}
+          <motion.div 
+            className="col-span-full bg-gray-50 rounded-2xl p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                <Clock className="w-5 h-5 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">Key Dates</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { date: 'February 15, 2025', label: 'Paper Submission Deadline' },
+                { date: 'March 1, 2025', label: 'Notification of Acceptance' },
+                { date: 'March 15, 2025', label: 'Camera-ready Submission' }
+              ].map((item, index) => (
+                <div key={index} className="bg-white rounded-xl p-4 text-center">
+                  <p className="text-lg font-bold text-gray-900 mb-1">{item.date}</p>
+                  <p className="text-sm text-gray-600">{item.label}</p>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
-            </motion.a>
-          ))}
-        </motion.div>
-
-        {/* Paper Structure and Format Requirements */}
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          {/* Paper Structure */}
-          <motion.div
-            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
-            variants={fadeIn}
-            whileHover="hover"
-            initial="rest"
-            animate="rest"
-            variants={cardHover}
-          >
-            <motion.div
-              className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500 rounded-full opacity-5 blur-3xl"
-              variants={glowVariant}
-              initial="initial"
-              animate="animate"
-            />
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
-                <Table className="w-6 h-6 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900">Paper Structure</h3>
-            </div>
-            <ul className="space-y-4">
-              {paperStructure.map((item, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-start gap-3 text-gray-600"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
-                  {item}
-                </motion.li>
               ))}
-            </ul>
-          </motion.div>
-
-          {/* Format Requirements */}
-          <motion.div
-            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
-            variants={fadeIn}
-            whileHover="hover"
-            initial="rest"
-            animate="rest"
-            variants={cardHover}
-          >
-            <motion.div
-              className="absolute -top-20 -right-20 w-40 h-40 bg-purple-500 rounded-full opacity-5 blur-3xl"
-              variants={glowVariant}
-              initial="initial"
-              animate="animate"
-            />
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
-                <FileCode className="w-6 h-6 text-purple-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900">Format Requirements</h3>
             </div>
-            <ul className="space-y-4">
-              {formatRequirements.map((requirement, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-start gap-3 text-gray-600"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2" />
-                  {requirement}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </motion.div>
-
-        {/* Submission Guidelines and Review Criteria */}
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          {/* Submission Guidelines */}
-          <motion.div
-            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
-            variants={fadeIn}
-            whileHover="hover"
-            initial="rest"
-            animate="rest"
-            variants={cardHover}
-          >
-            <motion.div
-              className="absolute -top-20 -right-20 w-40 h-40 bg-green-500 rounded-full opacity-5 blur-3xl"
-              variants={glowVariant}
-              initial="initial"
-              animate="animate"
-            />
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
-                <CheckCircle2 className="w-6 h-6 text-green-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900">Submission Guidelines</h3>
-            </div>
-            <ul className="space-y-4">
-              {submissionGuidelines.map((guideline, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-start gap-3 text-gray-600"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 mt-2" />
-                  {guideline}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Review Criteria */}
-          <motion.div
-            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
-            variants={fadeIn}
-            whileHover="hover"
-            initial="rest"
-            animate="rest"
-            variants={cardHover}
-          >
-            <motion.div
-              className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500 rounded-full opacity-5 blur-3xl"
-              variants={glowVariant}
-              initial="initial"
-              animate="animate"
-            />
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
-                <FileSearch className="w-6 h-6 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900">Review Criteria</h3>
-            </div>
-            <ul className="space-y-4">
-              {reviewCriteria.map((criteria, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-start gap-3 text-gray-600"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
-                  {criteria}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </motion.div>
-
-        {/* Common Mistakes and Ethical Guidelines */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Common Mistakes */}
-          <motion.div
-            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
-            variants={fadeIn}
-            initial="initial"
-            animate="animate"
-          >
-            <motion.div
-              className="absolute -top-20 -right-20 w-40 h-40 bg-red-500 rounded-full opacity-5 blur-3xl"
-              variants={glowVariant}
-              initial="initial"
-              animate="animate"
-            />
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
-                <XCircle className="w-6 h-6 text-red-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900">Common Mistakes to Avoid</h3>
-            </div>
-            <ul className="space-y-4">
-              {commonMistakes.map((mistake, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-start gap-3 text-gray-600"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2" />
-                  {mistake}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Ethical Guidelines */}
-          <motion.div
-            className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden"
-            variants={fadeIn}
-            initial="initial"
-            animate="animate"
-          >
-            <motion.div
-              className="absolute -top-20 -right-20 w-40 h-40 bg-orange-500 rounded-full opacity-5 blur-3xl"
-              variants={glowVariant}
-              initial="initial"
-              animate="animate"
-            />
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
-                <AlertTriangle className="w-6 h-6 text-orange-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900">Ethical Guidelines</h3>
-            </div>
-            <ul className="space-y-4">
-              {ethicalGuidelines.map((guideline, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-start gap-3 text-gray-600"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-400 mt-2" />
-                  {guideline}
-                </motion.li>
-              ))}
-            </ul>
           </motion.div>
         </div>
 
-        {/* Resources Section */}
-        <motion.div
-          className="mt-16"
-          variants={fadeIn}
-          initial="initial"
-          animate="animate"
+        {/* Help Section */}
+        <motion.div 
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
         >
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-blue-600" />
-            Additional Resources
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {[
-              { label: 'IEEE PDF Checker', icon: FileText, color: 'blue' },
-              { label: 'LaTeX Template', icon: FileCode, color: 'green' },
-              { label: 'Word Template', icon: FileSpreadsheet, color: 'purple' },
-              { label: 'Reference Guide', icon: BookMarked, color: 'orange' },
-            ].map((resource, index) => (
-              <motion.a
-                key={index}
-                href="#"
-                className={`flex items-center gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow text-gray-600 hover:text-${resource.color}-600 group`}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className={`w-10 h-10 rounded-lg bg-${resource.color}-100 flex items-center justify-center group-hover:bg-${resource.color}-200 transition-colors`}>
-                  <resource.icon className={`w-5 h-5 text-${resource.color}-600`} />
-                </div>
-                {resource.label}
-              </motion.a>
-            ))}
-          </div>
+          <p className="text-gray-600 mb-4">Need help with your submission?</p>
+          <a 
+            href="mailto:iccsai@galgotiasuniversity.edu.in"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+          >
+            <Link className="w-4 h-4" />
+            Contact Support Team
+          </a>
         </motion.div>
       </div>
     </section>

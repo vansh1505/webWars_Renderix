@@ -1,5 +1,3 @@
-import { link } from "motion/react-client";
-
 export const speakers = [
     {
       name: "Prof.(Dr.) S.N. Singh",
