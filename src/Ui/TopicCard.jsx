@@ -6,11 +6,10 @@ function TopicCard({ icon: Icon, title, items, color }) {
   return (
     <motion.div 
       className="relative group"
-      variants={fadeIn}
+      variants={cardHover}
       whileHover="hover"
       initial="rest"
       animate="rest"
-      variants={cardHover}
     >
       <div className={`absolute inset-0 bg-gradient-to-br from-${color}-100 to-${color}-50 rounded-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-300`} />
       <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg relative z-10 border border-gray-100 h-full">

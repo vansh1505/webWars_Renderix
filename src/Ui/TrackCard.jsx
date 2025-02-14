@@ -6,11 +6,10 @@ function TrackCard({ title, chairs, institution, icon: Icon, color }) {
   return (
     <motion.div 
       className="group"
-      variants={fadeIn}
+      variants={cardHover}
       whileHover="hover"
       initial="rest"
       animate="rest"
-      variants={cardHover}
     >
       <div className={`bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden border border-${color}-100 group-hover:border-${color}-200 transition-colors`}>
         <motion.div 

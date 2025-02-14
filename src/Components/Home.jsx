@@ -6,6 +6,7 @@ import Hero from './Hero';
 import About from './About';
 import Topics from './Topics';
 import TabButton from '../Ui/TabButton';
+import Tracks from './Tracks';
 
 const Home = () => {
     const [activeTab, setActiveTab] = useState('topics');
@@ -19,6 +20,8 @@ const Home = () => {
       switch(activeTab) {
         case 'topics':
           return <Topics />;
+        case 'tracks':
+          return <Tracks />;
         default:
           return null;
       }
@@ -46,6 +49,28 @@ const Home = () => {
           </motion.div>
           {renderContent()}
         </div>
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 p-8 rounded-2xl shadow-sm">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Contribute?</h3>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Submit your research paper to one of our specialized tracks and be part of this prestigious conference.
+            </p>
+            <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FICCSAI2025" target='_blank'>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold shadow-lg cursor-pointer shadow-blue-600/20"
+              >
+              Submit Your Paper
+            </motion.button>
+              </a>
+          </div>
+        </motion.div>
       </section>
     </>
   )
