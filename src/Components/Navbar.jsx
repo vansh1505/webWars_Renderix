@@ -40,8 +40,11 @@ const navItems = [
   {
     label: 'About',
     icon: Building2,
-    link: '/about',
-    dropdown: null
+    dropdown: [
+      { label: 'ICCSAI 2025', link: '/about' },
+      { label: 'Galgotias University', link: '/about-gu' },
+      { label: 'IEEE GUSB', link: '/about-ieeegusb' },
+    ]
   },
 ];
 

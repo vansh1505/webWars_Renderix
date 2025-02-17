@@ -7,6 +7,7 @@ import About from './About';
 import Topics from './Topics';
 import TabButton from '../Ui/TabButton';
 import Tracks from './Tracks';
+import CountdownTimer from './Countdown';
 
 const Home = () => {
     const [activeTab, setActiveTab] = useState('topics');
@@ -30,6 +31,7 @@ const Home = () => {
     <>
         <Hero />
         <About />
+        <CountdownTimer />
         <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div 
