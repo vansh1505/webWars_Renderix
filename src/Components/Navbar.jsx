@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   Menu,
   X,
-  Calendar,
   Users,
   BookOpen,
   GraduationCap,
@@ -41,7 +40,6 @@ const navItems = [
     label: 'About',
     icon: Building2,
     dropdown: [
-      { label: 'ICCSAI 2025', link: '/about' },
       { label: 'Galgotias University', link: '/about-gu' },
       { label: 'IEEE GUSB', link: '/about-ieeegusb' },
     ]

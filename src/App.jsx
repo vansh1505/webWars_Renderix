@@ -7,6 +7,7 @@ import Guidelines from './Components/Guidelines'
 import Registration from './Components/Registration'
 import CommitteeMembers from './Components/CommitteeMembers'
 import Speakers from './Components/Speakers'
+import AboutGu from './Components/AboutGu'
 const App = () => {
   return (
     <>
@@ -17,8 +18,7 @@ const App = () => {
         <Route path="/register" element={<Registration />} />
         <Route path="/members" element={<CommitteeMembers />} />
         <Route path="/speakers" element={<Speakers />} />
-        <Route path="/about-gu" element={""} />
-        <Route path="/about-ieeegusb" element={""} />
+        <Route path="/about-gu" element={<AboutGu/>} />
       </Routes>
       <Footer />
     </>
